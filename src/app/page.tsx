@@ -120,30 +120,55 @@ export default function Home() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
               </Link>
             </div>
+
+            {/* Mobile & Tablet Stats Grid (Visible only on screens smaller than lg) */}
+            <div className="mt-16 lg:hidden grid grid-cols-2 gap-4 w-full">
+              <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
+                <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
+                <div className="text-white text-2xl font-serif mb-1">25+</div>
+                <div className="text-gray-400 text-[9px] tracking-widest uppercase">Years of<br/>Experience</div>
+              </div>
+              <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
+                <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <div className="text-white text-2xl font-serif mb-1">10+</div>
+                <div className="text-gray-400 text-[9px] tracking-widest uppercase">Countries<br/>Served</div>
+              </div>
+              <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
+                <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <div className="text-white text-2xl font-serif mb-1">100%</div>
+                <div className="text-gray-400 text-[9px] tracking-widest uppercase">Quality<br/>Assured</div>
+              </div>
+              <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
+                <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <div className="text-white text-2xl font-serif mb-1">24/7</div>
+                <div className="text-gray-400 text-[9px] tracking-widest uppercase">Customer<br/>Support</div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        {/* Stats Card Overlapping */}
-        <div className="absolute right-0 bottom-[-40px] md:bottom-20 z-30 hidden md:block max-w-2xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-l-2xl shadow-2xl overflow-hidden">
+        {/* Stats Card Overlapping (Desktop Only) */}
+        <div className="absolute right-0 bottom-20 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-l-2xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-white/10">
-            <div className="p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
+            <div className="p-6 xl:p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
               <div className="text-brand-gold mb-3 group-hover:scale-110 transition-transform"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
-              <div className="text-white text-3xl font-serif mb-1">25+</div>
+              <div className="text-white text-2xl xl:text-3xl font-serif mb-1">25+</div>
               <div className="text-gray-400 text-[10px] tracking-widest uppercase">Years of<br/>Experience</div>
             </div>
-            <div className="p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
+            <div className="p-6 xl:p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
               <div className="text-brand-gold mb-3 group-hover:scale-110 transition-transform"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-              <div className="text-white text-3xl font-serif mb-1">10+</div>
+              <div className="text-white text-2xl xl:text-3xl font-serif mb-1">10+</div>
               <div className="text-gray-400 text-[10px] tracking-widest uppercase">Countries<br/>Served</div>
             </div>
-            <div className="p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
+            <div className="p-6 xl:p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
               <div className="text-brand-gold mb-3 group-hover:scale-110 transition-transform"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-              <div className="text-white text-3xl font-serif mb-1">100%</div>
+              <div className="text-white text-2xl xl:text-3xl font-serif mb-1">100%</div>
               <div className="text-gray-400 text-[10px] tracking-widest uppercase">Quality<br/>Assured</div>
             </div>
-            <div className="p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
+            <div className="p-6 xl:p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
               <div className="text-brand-gold mb-3 group-hover:scale-110 transition-transform"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-              <div className="text-white text-3xl font-serif mb-1">24/7</div>
+              <div className="text-white text-2xl xl:text-3xl font-serif mb-1">24/7</div>
               <div className="text-gray-400 text-[10px] tracking-widest uppercase">Customer<br/>Support</div>
             </div>
           </div>
