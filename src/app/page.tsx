@@ -540,7 +540,7 @@ export default function Home() {
             <div>
                <h4 className="text-white font-bold mb-2">Locations</h4>
                <p className="text-gray-500 text-sm flex flex-col gap-1">
-                 <span>Nineveh, Iraq</span>
+                 <span>Iraq</span>
                  <span>Turkey</span>
                </p>
             </div>
