@@ -87,7 +87,9 @@
     "app2": "Boru Kaplama ve Boyalar",
     "app2Desc": "Boru hatları için korozyon önleyici bariyerler.",
     "app3": "Asfalt Kaplama Uygulamaları",
-    "app3Desc": "Dayanıklı yollar için yüksek dirençli asfalt."
+    "app3Desc": "Dayanıklı yollar için yüksek dirençli asfalt.",
+    "techSpecsTitle": "Teknik Özellikler",
+    "primaryAppsTitle": "Temel Uygulamalar"
   },
   "quality": {
     "title": "Kalite Güvencesi",

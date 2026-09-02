@@ -33,11 +33,11 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
             <div className={`absolute inset-0 rounded-full transition-opacity duration-500 ${isScrolled ? 'opacity-0' : 'opacity-100 bg-white/20 blur-md scale-110'}`}></div>
             <img 
               src="/logo.png" 
-              alt="{dict.logoTitle} Logo" 
+              alt={`${dict.logoTitle} Logo`} 
               className={`relative z-10 w-10 h-10 md:w-12 md:h-12 object-contain transition-all duration-500 ${isScrolled ? 'drop-shadow-sm' : 'drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]'}`} 
             />
           </div>
-          <div className="flex flex-col text-left">
+          <div className="flex flex-col text-start">
             <span className={`font-serif font-bold text-lg md:text-2xl leading-none tracking-wide uppercase transition-colors duration-500 whitespace-nowrap ${isScrolled ? 'text-brand-dark' : 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'}`}>
               {dict.logoTitle}
             </span>

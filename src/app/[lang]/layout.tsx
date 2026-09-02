@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, Cairo } from "next/font/google";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const cairo = Cairo({ weight: ["400", "500", "600", "700"], subsets: ["arabic"], variable: "--font-cairo" });
 
 export const metadata: Metadata = {
   title: "GLOBAL AGRO Co. Oxidized Asphalt",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'tr' }];
+  return [{ lang: 'en' }, { lang: 'tr' }, { lang: 'ar' }];
 }
 
 export default async function RootLayout({
@@ -22,10 +23,12 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }>) {
   const { lang } = await params;
+  const dir = lang === 'ar' ? 'rtl' : 'ltr';
+  const sansFont = lang === 'ar' ? cairo.variable : inter.variable;
   
   return (
-    <html lang={lang} dir="ltr">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-gray-50 text-gray-900`}>
+    <html lang={lang} dir={dir} className={`${sansFont} ${playfair.variable}`}>
+      <body className="font-sans antialiased bg-gray-50 text-gray-900">
         {children}
       </body>
     </html>

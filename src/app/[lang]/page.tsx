@@ -112,7 +112,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         </div>
 
         {/* Stats Card Overlapping (Desktop Only) */}
-        <div className="absolute right-0 bottom-20 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-l-2xl shadow-2xl overflow-hidden">
+        <div className="absolute end-0 bottom-20 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-s-2xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-white/10">
             <div className="p-6 xl:p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
               <div className="text-brand-gold mb-3 group-hover:scale-110 transition-transform"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
@@ -197,14 +197,12 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
             {/* Left: Technical Data Table */}
             <div className="w-full lg:w-1/2 flex flex-col">
               <h3 className="text-2xl font-serif text-brand-dark font-bold mb-8 flex items-center gap-3 shrink-0">
-                <svg className="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                Technical Specifications
-              </h3>
+                <svg className="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>{dict.products.techSpecsTitle}</h3>
               
               <div className="bg-brand-dark rounded-2xl shadow-2xl p-[1px] relative overflow-hidden flex-grow flex flex-col mt-4">
                 {/* Glow effects in the background */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/20 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/20 rounded-full blur-3xl -me-20 -mt-20 pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ms-20 -mb-20 pointer-events-none"></div>
                 
                 <div className="bg-[#111]/90 backdrop-blur-xl rounded-[15px] relative z-10 flex-grow flex flex-col">
                   
@@ -212,7 +210,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                   <div className="flex justify-between items-center bg-white/5 border-b border-white/10 p-5 md:px-8">
                     <div className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest w-1/2">{dict.products.thTest}</div>
                     <div className="text-brand-gold text-[10px] md:text-xs font-bold uppercase tracking-widest text-center hidden md:block">{dict.products.thMethod}</div>
-                    <div className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest text-right">{dict.products.thResult}</div>
+                    <div className="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest text-end">{dict.products.thResult}</div>
                   </div>
                   
                   <div className="flex flex-col p-4 md:p-6 gap-8 overflow-y-auto">
@@ -245,9 +243,9 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                             <div className="hidden md:block text-center">
                               <span className="text-xs font-mono text-gray-400 bg-black/60 px-3 py-1 rounded-full border border-white/5 group-hover:text-white transition-colors">{spec.method}</span>
                             </div>
-                            <div className="text-right">
+                            <div className="text-end">
                               <span className="text-white font-bold text-base md:text-lg">{spec.value}</span>
-                              {spec.unit && <span className="text-gray-400 text-[10px] md:text-xs ml-1">{spec.unit}</span>}
+                              {spec.unit && <span className="text-gray-400 text-[10px] md:text-xs ms-1">{spec.unit}</span>}
                             </div>
                           </div>
                         ))}
@@ -281,9 +279,9 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                             <div className="hidden md:block text-center">
                               <span className="text-xs font-mono text-gray-400 bg-black/60 px-3 py-1 rounded-full border border-white/5 group-hover:text-white transition-colors">{spec.method}</span>
                             </div>
-                            <div className="text-right">
+                            <div className="text-end">
                               <span className="text-white font-bold text-base md:text-lg">{spec.value}</span>
-                              {spec.unit && <span className="text-gray-400 text-[10px] md:text-xs ml-1">{spec.unit}</span>}
+                              {spec.unit && <span className="text-gray-400 text-[10px] md:text-xs ms-1">{spec.unit}</span>}
                             </div>
                           </div>
                         ))}
@@ -315,9 +313,9 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                             <div className="hidden md:block text-center">
                               <span className="text-xs font-mono text-gray-400 bg-black/60 px-3 py-1 rounded-full border border-white/5 group-hover:text-white transition-colors">{spec.method}</span>
                             </div>
-                            <div className="text-right">
+                            <div className="text-end">
                               <span className="text-white font-bold text-base md:text-lg">{spec.value}</span>
-                              {spec.unit && <span className="text-gray-400 text-[10px] md:text-xs ml-1">{spec.unit}</span>}
+                              {spec.unit && <span className="text-gray-400 text-[10px] md:text-xs ms-1">{spec.unit}</span>}
                             </div>
                           </div>
                         ))}
@@ -332,9 +330,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
             {/* Right: Applications Cards */}
             <div id="applications" className="w-full lg:w-1/2 scroll-mt-24 flex flex-col">
                <h3 className="text-2xl font-serif text-brand-dark font-bold mb-8 flex items-center gap-3 shrink-0">
-                 <svg className="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                 Primary Applications
-               </h3>
+                 <svg className="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>{dict.products.primaryAppsTitle}</h3>
                
                <div className="flex flex-col gap-6 flex-grow">
                  {/* Roofing */}
@@ -394,7 +390,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
             </div>
             
             {/* Badges Side */}
-            <div className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-4 xl:gap-6 pl-0 lg:pl-10 lg:border-l border-white/10 items-start lg:items-center mt-10 lg:mt-0">
+            <div className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-4 xl:gap-6 ps-0 lg:ps-10 lg:border-s border-white/10 items-start lg:items-center mt-10 lg:mt-0">
               <div className="text-center">
                 <div className="text-brand-gold mb-3 flex justify-center"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
                 <h4 className="text-white text-[11px] font-bold uppercase tracking-wider mb-2" dangerouslySetInnerHTML={{ __html: dict.about.stateOfArt }}></h4>
@@ -417,7 +413,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
               </div>
               
               {/* Made in Iraq - Now a grid column */}
-              <div className="col-span-2 md:col-span-4 lg:col-span-1 flex flex-col items-center justify-center p-4 bg-brand-gold/10 border border-brand-gold/20 rounded-lg lg:ml-2">
+              <div className="col-span-2 md:col-span-4 lg:col-span-1 flex flex-col items-center justify-center p-4 bg-brand-gold/10 border border-brand-gold/20 rounded-lg lg:ms-2">
                  <div className="text-brand-gold text-[10px] font-bold tracking-[0.2em] uppercase mb-1 whitespace-nowrap">{dict.about.madeIn}</div>
                  <div className="text-white text-2xl xl:text-3xl font-serif font-bold tracking-wider">{dict.about.iraqBig}</div>
               </div>
@@ -529,7 +525,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
           </div>
           
           <div className="text-center text-gray-600 text-xs mt-16 pt-8 border-t border-white/5">
-            &copy; {new Date().getFullYear()} {dict.footer.logoTitle} Co. Company for Oxidized Asphalt Production Ltd. All rights reserved.
+            &copy; {new Date().getFullYear()} {dict.footer.rights}
           </div>
         </div>
       </section>

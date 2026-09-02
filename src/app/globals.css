@@ -23,6 +23,11 @@ body {
   color: var(--foreground);
 }
 
+html[lang="ar"] {
+  --font-sans: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cairo), ui-serif, Georgia, serif;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
