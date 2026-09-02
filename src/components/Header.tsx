@@ -21,7 +21,7 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
 
   return (
     <>
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none w-[90%] md:w-auto flex justify-center">
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none w-full px-4 md:w-auto md:px-0 flex flex-col items-center gap-3">
         <Link 
           href="#home" 
           className={`pointer-events-auto flex items-center gap-3 md:gap-4 backdrop-blur-xl shadow-2xl rounded-full px-5 py-2.5 md:px-8 md:py-3 transition-all duration-500 group
@@ -46,11 +46,15 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
             </span>
           </div>
         </Link>
+        
+        {/* Mobile Language Toggle */}
+        <div className="md:hidden pointer-events-auto">
+          <LanguageToggle currentLang={lang} />
+        </div>
       </div>
 
-
-      {/* Language Toggle placed top right */}
-      <div className="fixed top-6 right-6 z-50">
+      {/* Desktop Language Toggle placed top right */}
+      <div className="hidden md:block fixed top-6 end-6 z-50">
         <LanguageToggle currentLang={lang} />
       </div>
     </>
