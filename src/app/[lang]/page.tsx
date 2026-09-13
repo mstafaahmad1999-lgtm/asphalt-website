@@ -15,7 +15,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
       {/* 1. Fixed Top Center Logo */}
       <Header dict={dict} lang={lang} />
       {/* 2. Hero Section */}
-      <section id="home" className="relative min-h-[90vh] flex flex-col justify-center py-20 pb-32 lg:pb-40 pt-40 md:pt-48 lg:pt-56">
+      <section id="home" className="relative min-h-[90vh] flex flex-col justify-center py-20 pb-24 lg:pb-28 pt-32 md:pt-36 lg:pt-40">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
           {/* Main Hero Image - Constrained width prevents over-zooming so it looks normal */}
@@ -34,7 +34,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
           
           <FadeIn className="max-w-3xl" delay={0.2}>
             <h3 className="text-brand-gold font-serif text-base md:text-lg tracking-widest uppercase mb-4">{dict.about.f1Title}</h3>
-            <div className="text-4xl md:text-5xl lg:text-7xl font-serif text-white font-bold leading-tight mb-6">
+            <div className="text-4xl md:text-5xl lg:text-7xl font-serif text-white font-bold leading-tight mb-4 md:mb-6">
               <SlideUpMask delay={0.1}>
                 {dict.hero.title.replace(/\s*60\/70/g, '')}
               </SlideUpMask>
@@ -45,12 +45,12 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                 <span className="text-brand-gold block">60/70</span>
               </SlideUpMask>
             </div>
-            <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
+            <p className="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed mb-6 md:mb-10">
               {dict.hero.subtitle}
             </p>
             
             {/* Badges */}
-            <div className="flex flex-wrap items-center gap-6 md:gap-10 mb-12">
+            <div className="flex flex-wrap items-center gap-6 md:gap-10 mb-8 md:mb-10">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
@@ -139,7 +139,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         </div>
 
         {/* Stats Card Overlapping (Desktop Only) */}
-        <SlideIn direction={dir === 'rtl' ? 'left' : 'right'} delay={0.4} className="absolute end-0 bottom-28 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-s-2xl shadow-2xl overflow-hidden">
+        <SlideIn direction={dir === 'rtl' ? 'left' : 'right'} delay={0.4} className="absolute end-0 bottom-20 lg:bottom-24 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-s-2xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-white/10">
             <div className="p-6 xl:p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
               <div className="text-brand-gold mb-3 group-hover:scale-110 transition-transform"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
