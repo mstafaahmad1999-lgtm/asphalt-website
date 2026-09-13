@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { getDictionary } from "@/i18n";
 import Header from "@/components/Header";
-import { FadeIn, SlideIn, StaggerContainer, StaggerItem, ScaleIn, InteractiveCard, InteractiveButton, ContinuousPulseBg } from "@/components/MotionWrappers";
+import { FadeIn, SlideIn, StaggerContainer, StaggerItem, ScaleIn, InteractiveCard, InteractiveButton, ContinuousPulseBg, InfiniteMarquee, SlideUpMask, FloatingElement } from "@/components/MotionWrappers";
 
 export default async function Home({ params }: { params: Promise<{ lang: "en" | "tr" | "ar" }> }) {
   const { lang } = await params;
@@ -119,6 +119,16 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
               </div>
             </FadeIn>
 
+        </div>
+
+        {/* Marquee Banner */}
+        <div className="bg-brand-gold text-brand-dark py-4 flex overflow-hidden relative z-40 border-y border-brand-gold-dark/20 shadow-lg">
+          <InfiniteMarquee 
+            text={lang === 'ar' ? "جودة استثنائية • انتشار عالمي • تميز تقني • تصدير لكافة أنحاء العالم • " : "PREMIUM QUALITY • GLOBAL REACH • TECHNICAL EXCELLENCE • EXPORTING WORLDWIDE • "} 
+            speed={25} 
+            dir={dir}
+            className="text-sm md:text-base font-bold tracking-widest uppercase"
+          />
         </div>
 
         {/* Stats Card Overlapping (Desktop Only) */}
