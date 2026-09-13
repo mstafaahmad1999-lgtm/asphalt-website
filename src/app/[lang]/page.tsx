@@ -3,9 +3,11 @@ import Link from "next/link";
 
 import { getDictionary } from "@/i18n";
 import Header from "@/components/Header";
+import { FadeIn, SlideIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/MotionWrappers";
 
-export default async function Home({ params }: { params: Promise<{ lang: "en" | "tr" }> }) {
+export default async function Home({ params }: { params: Promise<{ lang: "en" | "tr" | "ar" }> }) {
   const { lang } = await params;
+  const dir = lang === 'ar' ? 'rtl' : 'ltr';
   const dict = await getDictionary(lang);
 
   return (
@@ -28,7 +30,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
 
         <div className="container mx-auto px-6 relative z-20">
           
-          <div className="max-w-3xl">
+          <FadeIn className="max-w-3xl" delay={0.2}>
             <h3 className="text-brand-gold font-serif text-base md:text-lg tracking-widest uppercase mb-4">{dict.about.f1Title}</h3>
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-white font-bold leading-tight mb-6">
               OXIDIZED BITUMEN<br />
@@ -83,36 +85,38 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
               </Link>
             </div>
+          </FadeIn>
 
             {/* Mobile & Tablet Stats Grid (Visible only on screens smaller than lg) */}
-            <div className="mt-16 lg:hidden grid grid-cols-2 gap-4 w-full">
-              <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
-                <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
-                <div className="text-white text-2xl font-serif mb-1">25+</div>
-                <div className="text-gray-400 text-[9px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.yearsExp }}></div>
+            <FadeIn delay={0.4}>
+              <div className="mt-16 lg:hidden grid grid-cols-2 gap-4 w-full">
+                <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
+                  <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
+                  <div className="text-white text-2xl font-serif mb-1">25+</div>
+                  <div className="text-gray-400 text-[9px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.yearsExp }}></div>
+                </div>
+                <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
+                  <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                  <div className="text-white text-2xl font-serif mb-1">10+</div>
+                  <div className="text-gray-400 text-[9px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.countriesServed }}></div>
+                </div>
+                <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
+                  <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                  <div className="text-white text-2xl font-serif mb-1">100%</div>
+                  <div className="text-gray-400 text-[9px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.qualityAssured }}></div>
+                </div>
+                <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
+                  <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                  <div className="text-white text-2xl font-serif mb-1">24/7</div>
+                  <div className="text-gray-400 text-[9px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.customerSupport }}></div>
+                </div>
               </div>
-              <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
-                <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-                <div className="text-white text-2xl font-serif mb-1">10+</div>
-                <div className="text-gray-400 text-[9px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.countriesServed }}></div>
-              </div>
-              <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
-                <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-                <div className="text-white text-2xl font-serif mb-1">100%</div>
-                <div className="text-gray-400 text-[9px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.qualityAssured }}></div>
-              </div>
-              <div className="bg-brand-gray/80 backdrop-blur border border-white/10 rounded-xl p-6 text-center flex flex-col items-center justify-center">
-                <div className="text-brand-gold mb-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-                <div className="text-white text-2xl font-serif mb-1">24/7</div>
-                <div className="text-gray-400 text-[9px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.customerSupport }}></div>
-              </div>
-            </div>
+            </FadeIn>
 
-          </div>
         </div>
 
         {/* Stats Card Overlapping (Desktop Only) */}
-        <div className="absolute end-0 bottom-20 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-s-2xl shadow-2xl overflow-hidden">
+        <SlideIn direction={dir === 'rtl' ? 'left' : 'right'} delay={0.4} className="absolute end-0 bottom-20 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-s-2xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-white/10">
             <div className="p-6 xl:p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
               <div className="text-brand-gold mb-3 group-hover:scale-110 transition-transform"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
@@ -135,7 +139,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
               <div className="text-gray-400 text-[10px] tracking-widest uppercase" dangerouslySetInnerHTML={{ __html: dict.hero.customerSupport }}></div>
             </div>
           </div>
-        </div>
+        </SlideIn>
       </section>
 
       {/* 3. Features Strip */}
@@ -184,18 +188,18 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
       {/* 4. Product Section */}
       <section id="products" className="bg-[#fafafa] py-16 md:py-24 relative pt-24 md:pt-32">
         <div className="container mx-auto px-6">
-          <div className="text-center max-w-4xl mx-auto mb-20">
+          <FadeIn className="text-center max-w-4xl mx-auto mb-20">
             <div className="text-brand-gold font-bold text-xs tracking-widest uppercase mb-4">{dict.about.f1Title}</div>
             <h2 className="text-4xl md:text-5xl font-serif text-brand-dark font-bold mb-6">{dict.hero.title}</h2>
             <p className="text-gray-600 leading-relaxed text-lg max-w-2xl mx-auto">
               {dict.products.desc}
             </p>
-          </div>
+          </FadeIn>
 
           <div className="flex flex-col lg:flex-row gap-16">
             
             {/* Left: Technical Data Table */}
-            <div className="w-full lg:w-1/2 flex flex-col">
+            <SlideIn direction={dir === 'rtl' ? 'right' : 'left'} className="w-full lg:w-1/2 flex flex-col">
               <h3 className="text-2xl font-serif text-brand-dark font-bold mb-8 flex items-center gap-3 shrink-0">
                 <svg className="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>{dict.products.techSpecsTitle}</h3>
               
@@ -325,10 +329,10 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                   </div>
                 </div>
               </div>
-            </div>
+            </SlideIn>
 
             {/* Right: Applications Cards */}
-            <div id="applications" className="w-full lg:w-1/2 scroll-mt-24 flex flex-col">
+            <SlideIn direction={dir === 'rtl' ? 'left' : 'right'} className="w-full lg:w-1/2 scroll-mt-24 flex flex-col">
                <h3 className="text-2xl font-serif text-brand-dark font-bold mb-8 flex items-center gap-3 shrink-0">
                  <svg className="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>{dict.products.primaryAppsTitle}</h3>
                
@@ -363,7 +367,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                    </div>
                  </div>
                </div>
-            </div>
+            </SlideIn>
 
           </div>
         </div>
@@ -377,7 +381,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             
             {/* Text Side */}
-            <div className="w-full lg:w-1/3">
+            <SlideIn direction={dir === 'rtl' ? 'right' : 'left'} className="w-full lg:w-1/3">
               <div className="text-brand-gold font-bold text-[10px] tracking-widest uppercase mb-2">{dict.about.aboutTitle}</div>
               <h3 className="text-2xl font-serif text-white font-bold mb-4">{dict.about.experience}</h3>
               <p className="text-gray-400 text-sm mb-6 leading-relaxed">
@@ -387,37 +391,37 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                 {dict.about.learnMore}
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
               </Link>
-            </div>
+            </SlideIn>
             
             {/* Badges Side */}
-            <div className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-4 xl:gap-6 ps-0 lg:ps-10 lg:border-s border-white/10 items-start lg:items-center mt-10 lg:mt-0">
-              <div className="text-center">
+            <StaggerContainer className="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-4 xl:gap-6 ps-0 lg:ps-10 lg:border-s border-white/10 items-start lg:items-center mt-10 lg:mt-0">
+              <StaggerItem className="text-center">
                 <div className="text-brand-gold mb-3 flex justify-center"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
                 <h4 className="text-white text-[11px] font-bold uppercase tracking-wider mb-2" dangerouslySetInnerHTML={{ __html: dict.about.stateOfArt }}></h4>
                 <p className="text-gray-500 text-[10px] hidden xl:block" dangerouslySetInnerHTML={{ __html: dict.about.stateOfArtDesc }}></p>
-              </div>
-              <div className="text-center">
+              </StaggerItem>
+              <StaggerItem className="text-center">
                 <div className="text-brand-gold mb-3 flex justify-center"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
                 <h4 className="text-white text-[11px] font-bold uppercase tracking-wider mb-2" dangerouslySetInnerHTML={{ __html: dict.about.strictQc }}></h4>
                 <p className="text-gray-500 text-[10px] hidden xl:block" dangerouslySetInnerHTML={{ __html: dict.about.strictQcDesc }}></p>
-              </div>
-              <div className="text-center">
+              </StaggerItem>
+              <StaggerItem className="text-center">
                 <div className="text-brand-gold mb-3 flex justify-center"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
                 <h4 className="text-white text-[11px] font-bold uppercase tracking-wider mb-2" dangerouslySetInnerHTML={{ __html: dict.about.globalStd }}></h4>
                 <p className="text-gray-500 text-[10px] hidden xl:block" dangerouslySetInnerHTML={{ __html: dict.about.globalStdDesc }}></p>
-              </div>
-              <div className="text-center">
+              </StaggerItem>
+              <StaggerItem className="text-center">
                 <div className="text-brand-gold mb-3 flex justify-center"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
                 <h4 className="text-white text-[11px] font-bold uppercase tracking-wider mb-2" dangerouslySetInnerHTML={{ __html: dict.about.sustainable }}></h4>
                 <p className="text-gray-500 text-[10px] hidden xl:block" dangerouslySetInnerHTML={{ __html: dict.about.sustainableDesc }}></p>
-              </div>
+              </StaggerItem>
               
               {/* Made in Iraq - Now a grid column */}
-              <div className="col-span-2 md:col-span-4 lg:col-span-1 flex flex-col items-center justify-center p-4 bg-brand-gold/10 border border-brand-gold/20 rounded-lg lg:ms-2">
+              <StaggerItem className="col-span-2 md:col-span-4 lg:col-span-1 flex flex-col items-center justify-center p-4 bg-brand-gold/10 border border-brand-gold/20 rounded-lg lg:ms-2">
                  <div className="text-brand-gold text-[10px] font-bold tracking-[0.2em] uppercase mb-1 whitespace-nowrap">{dict.about.madeIn}</div>
                  <div className="text-white text-2xl xl:text-3xl font-serif font-bold tracking-wider">{dict.about.iraqBig}</div>
-              </div>
-            </div>
+              </StaggerItem>
+            </StaggerContainer>
             
           </div>
         </div>
@@ -426,14 +430,14 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
       {/* 6. Insights & Resources Section */}
       <section id="resources" className="bg-white py-16 md:py-24 scroll-mt-10 border-t border-gray-100">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <FadeIn className="text-center mb-16">
              <div className="text-brand-gold font-bold text-xs tracking-widest uppercase mb-3">{dict.quality.insights}</div>
              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark font-bold mb-6">{dict.quality.everything}</h2>
-          </div>
+          </FadeIn>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Quality Assurance */}
-            <div className="bg-gray-50 rounded-xl p-8 md:p-10 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <StaggerItem className="bg-gray-50 rounded-xl p-8 md:p-10 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
               <div className="bg-brand-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-gold shrink-0">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
               </div>
@@ -441,10 +445,10 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                 <p className="text-gray-600 leading-relaxed text-sm">
                   {dict.quality.desc}
                 </p>
-            </div>
+            </StaggerItem>
 
             {/* Technical Documents */}
-            <div className="bg-brand-dark rounded-xl p-8 md:p-10 text-center shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden flex flex-col">
+            <StaggerItem className="bg-brand-dark rounded-xl p-8 md:p-10 text-center shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden flex flex-col">
               <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1563810162589-8a4a7538a7c2?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center"></div>
               <div className="relative z-10 flex flex-col h-full">
                 <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-gold shrink-0">
@@ -461,10 +465,10 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                    </a>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
 
             {/* Latest News */}
-            <div className="bg-gray-50 rounded-xl p-8 md:p-10 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <StaggerItem className="bg-gray-50 rounded-xl p-8 md:p-10 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
               <div className="bg-brand-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-gold shrink-0">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15M9 11l3 3m0 0l3-3m-3 3V8"></path></svg>
               </div>
@@ -475,15 +479,15 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
               <div className="mt-auto pt-6 border-t border-gray-200 text-gray-500 italic text-sm">
                 {dict.quality.newsComing}
               </div>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* 9. Contact Section & Footer */}
       <section id="contact" className="bg-brand-darker pt-16 md:pt-24 pb-12 scroll-mt-10">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+          <ScaleIn className="text-center mb-16">
             <div className="text-brand-gold font-bold text-xs tracking-widest uppercase mb-3">{dict.quality.getInTouch}</div>
             <h2 className="text-3xl md:text-4xl font-serif text-white font-bold mb-6">{dict.quality.contactUs}</h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
@@ -493,7 +497,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
               {dict.quality.requestQuote}
             </Link>
-          </div>
+          </ScaleIn>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-t border-white/10 pt-12 mt-12">
             <div>
