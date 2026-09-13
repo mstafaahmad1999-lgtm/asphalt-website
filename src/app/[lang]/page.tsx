@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { getDictionary } from "@/i18n";
 import Header from "@/components/Header";
-import { FadeIn, SlideIn, StaggerContainer, StaggerItem, ScaleIn } from "@/components/MotionWrappers";
+import { FadeIn, SlideIn, StaggerContainer, StaggerItem, ScaleIn, InteractiveCard, InteractiveButton, ContinuousPulseBg } from "@/components/MotionWrappers";
 
 export default async function Home({ params }: { params: Promise<{ lang: "en" | "tr" | "ar" }> }) {
   const { lang } = await params;
@@ -19,11 +19,13 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
           {/* Main Hero Image - Constrained width prevents over-zooming so it looks normal */}
-          <img 
-            src="/hero-bg.jpg" 
-            alt="Hero Background" 
-            className="absolute inset-y-0 right-0 w-full lg:w-[70%] h-full object-cover object-right z-0"
-          />
+          <ContinuousPulseBg className="absolute inset-y-0 right-0 w-full lg:w-[70%] h-full z-0">
+            <img 
+              src="/hero-bg.jpg" 
+              alt="Hero Background" 
+              className="w-full h-full object-cover object-right"
+            />
+          </ContinuousPulseBg>
           {/* Half black, blurry line transition */}
           <div className="absolute inset-0 bg-gradient-to-r from-black from-0% via-black via-40% md:via-40% to-transparent to-80% md:to-80% z-10 pointer-events-none"></div>
         </div>
@@ -76,14 +78,18 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
 
             {/* Actions */}
             <div className="flex flex-wrap items-center gap-4">
-              <Link href="#products" className="bg-brand-gold hover:bg-brand-gold-dark text-white px-8 py-3.5 rounded text-sm font-bold transition-colors flex items-center gap-2 uppercase tracking-wide shadow-lg shadow-brand-gold/20">
-                {dict.hero.exploreBtn}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              </Link>
-              <Link href="#contact" className="bg-white hover:bg-gray-100 text-brand-dark px-8 py-3.5 rounded text-sm font-bold transition-colors flex items-center gap-2 uppercase tracking-wide">
-                {dict.hero.contactBtn}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              </Link>
+              <InteractiveButton>
+                <Link href="#products" className="bg-brand-gold hover:bg-brand-gold-dark text-white px-8 py-3.5 rounded text-sm font-bold transition-colors flex items-center gap-2 uppercase tracking-wide shadow-lg shadow-brand-gold/20">
+                  {dict.hero.exploreBtn}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </Link>
+              </InteractiveButton>
+              <InteractiveButton>
+                <Link href="#contact" className="bg-white hover:bg-gray-100 text-brand-dark px-8 py-3.5 rounded text-sm font-bold transition-colors flex items-center gap-2 uppercase tracking-wide">
+                  {dict.hero.contactBtn}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </Link>
+              </InteractiveButton>
             </div>
           </FadeIn>
 
@@ -338,34 +344,34 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                
                <div className="flex flex-col gap-6 flex-grow">
                  {/* Roofing */}
-                 <div className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                 <InteractiveCard className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer flex flex-col">
                    <div className="absolute inset-0 bg-[url('/roofing.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                    <div className="absolute bottom-6 left-6 z-10">
                      <h4 className="text-white font-serif text-2xl font-bold tracking-wide">{dict.products.app1}</h4>
                      <p className="text-gray-300 text-sm mt-1">{dict.products.app1Desc}</p>
                    </div>
-                 </div>
+                 </InteractiveCard>
 
                  {/* Pipe Wrap */}
-                 <div className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                 <InteractiveCard className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer flex flex-col">
                    <div className="absolute inset-0 bg-[url('/pipe-wrap.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                    <div className="absolute bottom-6 left-6 z-10">
                      <h4 className="text-white font-serif text-2xl font-bold tracking-wide">{dict.products.app2}</h4>
                      <p className="text-gray-300 text-sm mt-1">{dict.products.app2Desc}</p>
                    </div>
-                 </div>
+                 </InteractiveCard>
 
                  {/* Paving */}
-                 <div className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer">
+                 <InteractiveCard className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer flex flex-col">
                    <div className="absolute inset-0 bg-[url('/paving.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                    <div className="absolute bottom-6 left-6 z-10">
                      <h4 className="text-white font-serif text-2xl font-bold tracking-wide">{dict.products.app3}</h4>
                      <p className="text-gray-300 text-sm mt-1">{dict.products.app3Desc}</p>
                    </div>
-                 </div>
+                 </InteractiveCard>
                </div>
             </SlideIn>
 
@@ -437,7 +443,8 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
           
           <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Quality Assurance */}
-            <StaggerItem className="bg-gray-50 rounded-xl p-8 md:p-10 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <StaggerItem>
+              <InteractiveCard className="bg-gray-50 rounded-xl p-8 md:p-10 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
               <div className="bg-brand-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-gold shrink-0">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
               </div>
@@ -445,10 +452,12 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                 <p className="text-gray-600 leading-relaxed text-sm">
                   {dict.quality.desc}
                 </p>
+              </InteractiveCard>
             </StaggerItem>
 
             {/* Technical Documents */}
-            <StaggerItem className="bg-brand-dark rounded-xl p-8 md:p-10 text-center shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden flex flex-col">
+            <StaggerItem>
+              <InteractiveCard className="bg-brand-dark rounded-xl p-8 md:p-10 text-center shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden flex flex-col h-full">
               <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1563810162589-8a4a7538a7c2?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center"></div>
               <div className="relative z-10 flex flex-col h-full">
                 <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-gold shrink-0">
@@ -465,10 +474,12 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                    </a>
                 </div>
               </div>
+              </InteractiveCard>
             </StaggerItem>
 
             {/* Latest News */}
-            <StaggerItem className="bg-gray-50 rounded-xl p-8 md:p-10 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            <StaggerItem>
+              <InteractiveCard className="bg-gray-50 rounded-xl p-8 md:p-10 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
               <div className="bg-brand-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-gold shrink-0">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15M9 11l3 3m0 0l3-3m-3 3V8"></path></svg>
               </div>
@@ -479,6 +490,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
               <div className="mt-auto pt-6 border-t border-gray-200 text-gray-500 italic text-sm">
                 {dict.quality.newsComing}
               </div>
+              </InteractiveCard>
             </StaggerItem>
           </StaggerContainer>
         </div>
