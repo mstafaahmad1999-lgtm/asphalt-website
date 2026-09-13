@@ -34,10 +34,17 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
           
           <FadeIn className="max-w-3xl" delay={0.2}>
             <h3 className="text-brand-gold font-serif text-base md:text-lg tracking-widest uppercase mb-4">{dict.about.f1Title}</h3>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-white font-bold leading-tight mb-6">
-              OXIDIZED BITUMEN<br />
-              <span className="text-brand-gold">{dict.hero.blownAsphalt}</span>
-            </h1>
+            <div className="text-4xl md:text-5xl lg:text-7xl font-serif text-white font-bold leading-tight mb-6">
+              <SlideUpMask delay={0.1}>
+                {dict.hero.title.replace(/\s*60\/70/g, '')}
+              </SlideUpMask>
+              <SlideUpMask delay={0.3}>
+                <span className="text-brand-gold block">{dict.hero.blownAsphalt.replace(/\s*60\/70/g, '')}</span>
+              </SlideUpMask>
+              <SlideUpMask delay={0.5}>
+                <span className="text-brand-gold block">60/70</span>
+              </SlideUpMask>
+            </div>
             <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
               {dict.hero.subtitle}
             </p>
