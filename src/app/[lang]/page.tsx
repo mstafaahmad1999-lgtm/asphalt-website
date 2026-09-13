@@ -15,7 +15,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
       {/* 1. Fixed Top Center Logo */}
       <Header dict={dict} lang={lang} />
       {/* 2. Hero Section */}
-      <section id="home" className="relative min-h-[90vh] flex flex-col justify-center py-20 lg:py-32 pt-40 md:pt-48 lg:pt-56">
+      <section id="home" className="relative min-h-[90vh] flex flex-col justify-center py-20 pb-32 lg:pb-40 pt-40 md:pt-48 lg:pt-56">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
           {/* Main Hero Image - Constrained width prevents over-zooming so it looks normal */}
@@ -139,7 +139,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         </div>
 
         {/* Stats Card Overlapping (Desktop Only) */}
-        <SlideIn direction={dir === 'rtl' ? 'left' : 'right'} delay={0.4} className="absolute end-0 bottom-20 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-s-2xl shadow-2xl overflow-hidden">
+        <SlideIn direction={dir === 'rtl' ? 'left' : 'right'} delay={0.4} className="absolute end-0 bottom-28 z-30 hidden lg:block max-w-2xl xl:max-w-3xl bg-brand-gray/90 backdrop-blur border border-white/10 rounded-s-2xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-white/10">
             <div className="p-6 xl:p-8 text-center flex flex-col items-center justify-center group hover:bg-white/5 transition-colors cursor-default">
               <div className="text-brand-gold mb-3 group-hover:scale-110 transition-transform"><svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
