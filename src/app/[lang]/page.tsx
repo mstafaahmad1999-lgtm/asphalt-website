@@ -122,7 +122,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         </div>
 
         {/* Marquee Banner */}
-        <div className="bg-brand-gold text-brand-dark py-4 flex overflow-hidden relative z-40 border-y border-brand-gold-dark/20 shadow-lg">
+        <div className="bg-brand-gold text-brand-dark py-3 flex overflow-hidden fixed bottom-0 left-0 w-full z-[100] border-t border-brand-gold-dark/20 shadow-[0_-5px_20px_rgba(0,0,0,0.3)]">
           <InfiniteMarquee 
             text={lang === 'ar' ? "جودة استثنائية • انتشار عالمي • تميز تقني • تصدير لكافة أنحاء العالم • " : "PREMIUM QUALITY • GLOBAL REACH • TECHNICAL EXCELLENCE • EXPORTING WORLDWIDE • "} 
             speed={25} 
@@ -507,7 +507,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
       </section>
 
       {/* 9. Contact Section & Footer */}
-      <section id="contact" className="bg-brand-darker pt-16 md:pt-24 pb-12 scroll-mt-10">
+      <section id="contact" className="bg-brand-darker pt-16 md:pt-24 pb-24 scroll-mt-10">
         <div className="container mx-auto px-6">
           <ScaleIn className="text-center mb-16">
             <div className="text-brand-gold font-bold text-xs tracking-widest uppercase mb-3">{dict.quality.getInTouch}</div>
