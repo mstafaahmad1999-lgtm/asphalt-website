@@ -17,18 +17,17 @@ export default function LanguageToggle({ currentLang }: { currentLang: string })
   ];
 
   return (
-    <div className="bg-brand-gray/80 backdrop-blur-md border border-white/20 rounded-full shadow-lg p-1 flex items-center" dir="ltr">
-      {langs.map((lang) => (
-        <Link 
-          key={lang.code}
-          href={getPath(lang.code)}
-          className={`py-1.5 px-3 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-300 uppercase tracking-widest flex items-center justify-center
-            ${currentLang === lang.code 
-              ? 'bg-brand-gold text-brand-dark shadow-sm' 
-              : 'text-white hover:bg-white/10'}`}
-        >
-          {lang.label}
-        </Link>
+    <div className="flex items-center gap-2" dir="ltr">
+      {langs.map((lang, index) => (
+        <span key={lang.code} className="flex items-center gap-2">
+          <Link 
+            href={getPath(lang.code)}
+            className={`text-sm transition-opacity duration-180 ${currentLang === lang.code ? 'font-semibold text-graphite' : 'font-normal text-zinc hover:text-graphite'}`}
+          >
+            {lang.label}
+          </Link>
+          {index < langs.length - 1 && <span className="text-zinc select-none text-xs">|</span>}
+        </span>
       ))}
     </div>
   );

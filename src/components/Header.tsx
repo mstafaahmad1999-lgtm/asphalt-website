@@ -1,62 +1,89 @@
 "use client";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import LanguageToggle from "./LanguageToggle";
 
 export default function Header({ dict, lang }: { dict: any, lang: string }) {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // The hero section is dark, swap colors after scrolling past most of it
-      if (window.scrollY > window.innerHeight * 0.7) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Hardcoding the nav items for now based on the dictionary structure
+  const navItems = [
+    { key: "Product", href: "#products" },
+    { key: "Supply", href: "#supply" }, // Will map later
+    { key: "Quality", href: "#quality" },
+    { key: "Company", href: "#about" }
+  ];
 
   return (
     <>
-      <div className="fixed top-6 start-1/2 -translate-x-1/2 z-50 pointer-events-none w-full px-4 md:w-auto md:px-0 flex flex-col items-center gap-3">
-        <Link 
-          href="#home" 
-          className={`pointer-events-auto flex items-center gap-3 md:gap-4 backdrop-blur-xl shadow-2xl rounded-full px-5 py-2.5 md:px-8 md:py-3 transition-all duration-500 group
-            ${isScrolled 
-              ? 'bg-white/70 border border-gray-200/50 hover:bg-white/90' 
-              : 'bg-white/5 border border-white/20 hover:bg-white/10'}`}
-        >
-          <div className="relative transition-transform duration-500 group-hover:scale-105 flex items-center justify-center shrink-0">
-            <div className={`absolute inset-0 rounded-full transition-opacity duration-500 ${isScrolled ? 'opacity-0' : 'opacity-100 bg-white/20 blur-md scale-110'}`}></div>
-            <img 
+      <header className="sticky top-0 z-50 w-full h-[60px] md:h-[72px] bg-paper border-b border-rule flex items-center px-4 md:px-6">
+        <div className="w-full max-w-[1440px] mx-auto flex items-center justify-between">
+          
+          {/* Logo */}
+          <Link href="#home" className="flex items-center gap-3">
+            <Image 
               src="/logo.png" 
-              alt={`${dict.logoTitle} Logo`} 
-              className={`relative z-10 w-10 h-10 md:w-12 md:h-12 object-contain transition-all duration-500 ${isScrolled ? 'drop-shadow-sm' : 'drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]'}`} 
+              alt="GLOBAL AGRO Logo" 
+              width={32} 
+              height={32} 
+              className="object-contain"
             />
-          </div>
-          <div className="flex flex-col text-start">
-            <span className={`font-serif font-bold text-lg md:text-2xl leading-none tracking-wide uppercase transition-colors duration-500 whitespace-nowrap ${isScrolled ? 'text-brand-dark' : 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'}`}>
+            <span className="font-sans font-bold text-[17px] text-graphite tracking-tight uppercase">
               {dict.logoTitle}
             </span>
-            <span className={`text-[9px] md:text-[10px] tracking-[0.2em] uppercase mt-1 font-medium transition-colors duration-500 ${isScrolled ? 'text-gray-600' : 'text-gray-200'}`}>
-              {dict.logoSubtitle}
-            </span>
-          </div>
-        </Link>
-        
-        {/* Mobile Language Toggle */}
-        <div className="md:hidden pointer-events-auto">
-          <LanguageToggle currentLang={lang} />
-        </div>
-      </div>
+          </Link>
 
-      {/* Desktop Language Toggle placed top right */}
-      <div className="hidden md:block fixed top-6 end-6 z-50">
-        <LanguageToggle currentLang={lang} />
-      </div>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8 text-[15px] font-medium text-graphite">
+            {navItems.map((item) => (
+              <Link key={item.key} href={item.href} className="hover:underline underline-offset-4 decoration-1">
+                {item.key}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right Area: Lang & Mobile Menu Toggle */}
+          <div className="flex items-center gap-6">
+            <div className="hidden md:block">
+              <LanguageToggle currentLang={lang} />
+            </div>
+            <button 
+              className="md:hidden text-graphite p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                {mobileMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 8h16M4 16h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 top-[60px] z-40 bg-paper p-6 flex flex-col gap-6 md:hidden">
+          <nav className="flex flex-col gap-6 text-[28px] font-medium text-graphite text-start">
+            {navItems.map((item) => (
+              <Link 
+                key={item.key} 
+                href={item.href} 
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.key}
+              </Link>
+            ))}
+          </nav>
+          <div className="mt-auto pt-6 border-t border-rule">
+            <LanguageToggle currentLang={lang} />
+          </div>
+        </div>
+      )}
     </>
   );
 }

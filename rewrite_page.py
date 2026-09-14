@@ -1,4 +1,6 @@
-import Image from "next/image";
+import os
+
+content = """import Image from "next/image";
 import Link from "next/link";
 import { getDictionary } from "@/i18n";
 import Header from "@/components/Header";
@@ -104,7 +106,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                   <td className="py-2 text-[14px] text-graphite">Ductility @ 25°C</td>
                   <td className="py-2 text-[14px] text-zinc">ASTM D113</td>
                   <td className="py-2 text-[14px] text-graphite text-end data">≥100</td>
-                  <td className="py-2 text-[14px] text-graphite text-end pe-4 data">&gt;150</td>
+                  <td className="py-2 text-[14px] text-graphite text-end pe-4 data">>150</td>
                 </tr>
               </tbody>
             </table>
@@ -276,3 +278,8 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
     </div>
   );
 }
+"""
+
+with open('src/app/[lang]/page.tsx', 'w', encoding='utf-8') as f:
+    f.write(content)
+print("page.tsx rewritten for Phase B")
