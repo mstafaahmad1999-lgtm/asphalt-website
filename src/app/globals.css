@@ -1,34 +1,117 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #111827;
+  /* ground */
+  --color-paper:     #EDEAE3;
+  --color-paper-alt: #E2DED5;
+
+  /* ink */
+  --color-graphite:  #1C1A17;
+  --color-zinc:      #8A8378;
+
+  /* material */
+  --color-bitumen:   #0E0C0A;
+
+  /* signal */
+  --color-heat:      #C2410C;
+
+  /* derived */
+  --color-rule:      color-mix(in srgb, var(--color-zinc) 40%, transparent);
+  --color-rule-firm: color-mix(in srgb, var(--color-graphite) 25%, transparent);
+
+  /* typography */
+  --font-latin: 'Archivo', system-ui, sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+
+  --t-display: clamp(3.25rem, 8.5vw, 7rem);
+  --t-h2:      clamp(1.875rem, 3.2vw, 2.5rem);
+  --t-h3:      1.375rem;
+  --t-body:    1.0625rem; /* 17px */
+  --t-data:    1rem;
+  --t-caption: 0.8125rem; /* 13px */
+
+  /* spacing */
+  --s-1: 4px;   
+  --s-2: 8px;   
+  --s-3: 12px;  
+  --s-4: 16px;
+  --s-5: 24px;  
+  --s-6: 32px;  
+  --s-7: 48px;  
+  --s-8: 64px;
+  --s-9: 96px;  
+  --s-10: 128px; 
+  --s-11: 160px;
+
+  /* grid & sizing */
+  --max:    1440px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --rail:   200px;
+
+  /* motion */
+  --e-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --e-io:    cubic-bezier(0.65, 0, 0.35, 1);
+  --e-sharp: cubic-bezier(0.4, 0, 1, 1);
+
+  --d-fast:  140ms;
+  --d-base:  220ms;
+  --d-slow:  420ms;
+  --d-hero:  600ms;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
-  
-  --color-brand-gold: #B88645;
-  --color-brand-gold-dark: #9A6F36;
-  --color-brand-dark: #0F1115;
-  --color-brand-darker: #0A0B0E;
-  --color-brand-gray: #1E2128;
-}
+  --color-paper: var(--color-paper);
+  --color-paper-alt: var(--color-paper-alt);
+  --color-graphite: var(--color-graphite);
+  --color-zinc: var(--color-zinc);
+  --color-bitumen: var(--color-bitumen);
+  --color-heat: var(--color-heat);
+  --color-rule: var(--color-rule);
+  --color-rule-firm: var(--color-rule-firm);
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+  --font-sans: var(--font-latin);
+  --font-arabic: var(--font-arabic);
 }
 
 html[lang="ar"] {
-  --font-sans: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-cairo), ui-serif, Georgia, serif;
+  --font-sans: var(--font-arabic);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+body {
+  background: var(--color-paper);
+  color: var(--color-graphite);
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:lang(ar) body { 
+  line-height: 1.9; 
+}
+
+.display {
+  font-family: var(--font-sans);
+  font-variation-settings: 'wdth' 112, 'wght' 800;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+}
+
+table, .data, .stat { 
+  font-variant-numeric: tabular-nums lining; 
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .ticker { animation: none; }
+  video[data-hero] { display: none; }
+  .hero-poster { display: block !important; }
 }

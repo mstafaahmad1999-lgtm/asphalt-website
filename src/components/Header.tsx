@@ -21,7 +21,7 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
 
   return (
     <>
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none w-full px-4 md:w-auto md:px-0 flex flex-col items-center gap-3">
+      <div className="fixed top-6 start-1/2 -translate-x-1/2 z-50 pointer-events-none w-full px-4 md:w-auto md:px-0 flex flex-col items-center gap-3">
         <Link 
           href="#home" 
           className={`pointer-events-auto flex items-center gap-3 md:gap-4 backdrop-blur-xl shadow-2xl rounded-full px-5 py-2.5 md:px-8 md:py-3 transition-all duration-500 group

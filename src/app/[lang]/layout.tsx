@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Cairo } from "next/font/google";
+import { Archivo, IBM_Plex_Sans_Arabic } from "next/font/google";
 import "../globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
-const cairo = Cairo({ weight: ["400", "500", "600", "700"], subsets: ["arabic"], variable: "--font-cairo" });
+const archivo = Archivo({ 
+  subsets: ["latin"], 
+  variable: "--font-latin",
+  display: 'swap',
+});
+
+const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({ 
+  weight: ["400", "500", "600", "700"], 
+  subsets: ["arabic"], 
+  variable: "--font-arabic",
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "GLOBAL AGRO Co. Oxidized Asphalt",
@@ -24,11 +33,10 @@ export default async function RootLayout({
 }>) {
   const { lang } = await params;
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
-  const sansFont = lang === 'ar' ? cairo.variable : inter.variable;
   
   return (
-    <html lang={lang} dir={dir} className={`${sansFont} ${playfair.variable}`}>
-      <body className="font-sans antialiased bg-gray-50 text-gray-900">
+    <html lang={lang} dir={dir} className={`${archivo.variable} ${ibmPlexSansArabic.variable}`}>
+      <body className="antialiased">
         {children}
       </body>
     </html>

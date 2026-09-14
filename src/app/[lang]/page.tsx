@@ -19,12 +19,8 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
           {/* Main Hero Image - Constrained width prevents over-zooming so it looks normal */}
-          <ContinuousPulseBg className="absolute inset-y-0 right-0 w-full lg:w-[70%] h-full z-0">
-            <img 
-              src="/hero-bg.jpg" 
-              alt="Hero Background" 
-              className="w-full h-full object-cover object-right"
-            />
+          <ContinuousPulseBg className="absolute inset-y-0 end-0 w-full lg:w-[70%] h-full z-0">
+            <Image src="/hero-bg.jpg" alt="Hero Background" fill priority className="w-full h-full object-cover object-right" />
           </ContinuousPulseBg>
           {/* Half black, blurry line transition */}
           <div className="absolute inset-0 bg-gradient-to-r from-black from-0% via-black via-40% md:via-40% to-transparent to-80% md:to-80% z-10 pointer-events-none"></div>
@@ -129,7 +125,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         </div>
 
         {/* Marquee Banner */}
-        <div className="bg-brand-gold text-brand-dark py-3 flex overflow-hidden fixed bottom-0 left-0 w-full z-[100] border-t border-brand-gold-dark/20 shadow-[0_-5px_20px_rgba(0,0,0,0.3)]">
+        <div className="bg-brand-gold text-brand-dark py-3 flex overflow-hidden fixed bottom-0 start-0 w-full z-[100] border-t border-brand-gold-dark/20 shadow-[0_-5px_20px_rgba(0,0,0,0.3)]">
           <InfiniteMarquee 
             text={lang === 'ar' ? "جودة استثنائية • انتشار عالمي • تميز تقني • تصدير لكافة أنحاء العالم • " : "PREMIUM QUALITY • GLOBAL REACH • TECHNICAL EXCELLENCE • EXPORTING WORLDWIDE • "} 
             speed={25} 
@@ -228,8 +224,8 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
               
               <div className="bg-brand-dark rounded-2xl shadow-2xl p-[1px] relative overflow-hidden flex-grow flex flex-col mt-4">
                 {/* Glow effects in the background */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/20 rounded-full blur-3xl -me-20 -mt-20 pointer-events-none"></div>
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ms-20 -mb-20 pointer-events-none"></div>
+                <div className="absolute top-0 end-0 w-64 h-64 bg-brand-gold/20 rounded-full blur-3xl -me-20 -mt-20 pointer-events-none"></div>
+                <div className="absolute bottom-0 start-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ms-20 -mb-20 pointer-events-none"></div>
                 
                 <div className="bg-[#111]/90 backdrop-blur-xl rounded-[15px] relative z-10 flex-grow flex flex-col">
                   
@@ -364,7 +360,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                  <InteractiveCard className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer flex flex-col">
                    <div className="absolute inset-0 bg-[url('/roofing.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                   <div className="absolute bottom-6 left-6 z-10">
+                   <div className="absolute bottom-6 start-6 z-10">
                      <h4 className="text-white font-serif text-2xl font-bold tracking-wide">{dict.products.app1}</h4>
                      <p className="text-gray-300 text-sm mt-1">{dict.products.app1Desc}</p>
                    </div>
@@ -374,7 +370,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                  <InteractiveCard className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer flex flex-col">
                    <div className="absolute inset-0 bg-[url('/pipe-wrap.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                   <div className="absolute bottom-6 left-6 z-10">
+                   <div className="absolute bottom-6 start-6 z-10">
                      <h4 className="text-white font-serif text-2xl font-bold tracking-wide">{dict.products.app2}</h4>
                      <p className="text-gray-300 text-sm mt-1">{dict.products.app2Desc}</p>
                    </div>
@@ -384,7 +380,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
                  <InteractiveCard className="group relative flex-1 min-h-[140px] rounded-xl overflow-hidden shadow-lg cursor-pointer flex flex-col">
                    <div className="absolute inset-0 bg-[url('/paving.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                   <div className="absolute bottom-6 left-6 z-10">
+                   <div className="absolute bottom-6 start-6 z-10">
                      <h4 className="text-white font-serif text-2xl font-bold tracking-wide">{dict.products.app3}</h4>
                      <p className="text-gray-300 text-sm mt-1">{dict.products.app3Desc}</p>
                    </div>
