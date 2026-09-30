@@ -7,7 +7,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 const cairo = Cairo({ weight: ["400", "500", "600", "700"], subsets: ["arabic"], variable: "--font-cairo" });
 
 export const metadata: Metadata = {
-  title: "GLOBAL AGRO Co. Oxidized Asphalt",
+  title: "TAJ ASPHALT Co. Oxidized Asphalt",
   description: "Premium Quality Oxidized Bitumen Blown Asphalt 60/70. High performance oxidized bitumen for waterproofing, industrial coatings, roofing membranes, pipe-wrap and paving applications.",
 };
 

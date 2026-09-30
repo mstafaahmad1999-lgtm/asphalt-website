@@ -32,7 +32,7 @@ export default function Header({ dict, lang }: { dict: any, lang: string }) {
           <div className="relative transition-transform duration-500 group-hover:scale-105 flex items-center justify-center shrink-0">
             <div className={`absolute inset-0 rounded-full transition-opacity duration-500 ${isScrolled ? 'opacity-0' : 'opacity-100 bg-white/20 blur-md scale-110'}`}></div>
             <img 
-              src="/logo.png" 
+              src="/taj-icon.png" 
               alt={`${dict.logoTitle} Logo`} 
               className={`relative z-10 w-10 h-10 md:w-12 md:h-12 object-contain transition-all duration-500 ${isScrolled ? 'drop-shadow-sm' : 'drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]'}`} 
             />
