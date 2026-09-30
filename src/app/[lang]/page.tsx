@@ -522,7 +522,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
             <p className="text-gray-400 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
               {dict.quality.contactDesc}
             </p>
-            <Link href="mailto:info@global-agro.net" className="bg-brand-gold hover:bg-brand-gold-dark text-white px-10 py-4 rounded text-sm font-bold transition-colors inline-flex items-center gap-2 uppercase tracking-wider shadow-lg shadow-brand-gold/20">
+            <Link href="mailto:info@taj-asphalt.com" className="bg-brand-gold hover:bg-brand-gold-dark text-white px-10 py-4 rounded text-sm font-bold transition-colors inline-flex items-center gap-2 uppercase tracking-wider shadow-lg shadow-brand-gold/20">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
               {dict.quality.requestQuote}
             </Link>
@@ -539,7 +539,7 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
             <div>
                <h4 className="text-white font-bold mb-2">{dict.footer.email}</h4>
                <p className="text-gray-500 text-sm">
-                 <a href="mailto:info@global-agro.net" className="hover:text-brand-gold transition-colors">info@global-agro.net</a>
+                 <a href="mailto:info@taj-asphalt.com" className="hover:text-brand-gold transition-colors">info@taj-asphalt.com</a>
                </p>
             </div>
             <div>
