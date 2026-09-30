@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   { src: "/slideshow-1.jpg", alt: "Bitumen barrels at industrial facility" },
@@ -14,7 +14,11 @@ const slides = [
 const INTERVAL = 5000;
 const premiumEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-export default function HeroSlideshow() {
+interface HeroSlideshowProps {
+  variant?: "stacked" | "single";
+}
+
+export default function HeroSlideshow({ variant = "stacked" }: HeroSlideshowProps) {
   const [current, setCurrent] = useState(0);
 
   const advance = useCallback(() => {
@@ -29,13 +33,47 @@ export default function HeroSlideshow() {
   const getSlideIndex = (offset: number) =>
     (current + offset) % slides.length;
 
-  // Card stack: 3 visible cards — back card, middle card, front card
+  // ─── SINGLE CARD (Mobile) ───
+  if (variant === "single") {
+    return (
+      <div className="relative w-full h-full">
+        <AnimatePresence mode="sync">
+          <motion.img
+            key={current}
+            src={slides[current].src}
+            alt={slides[current].alt}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 0.8, ease: premiumEase },
+              scale: { duration: 5, ease: premiumEase },
+            }}
+            className="absolute inset-0 w-full h-full object-cover"
+            draggable={false}
+            loading="eager"
+          />
+        </AnimatePresence>
+        {/* Gold top accent */}
+        <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent z-10" />
+        {/* Indicators */}
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+          {slides.map((_, i) => (
+            <button key={i} onClick={() => setCurrent(i)} aria-label={`Slide ${i + 1}`}>
+              <div className={`rounded-full transition-all duration-400 ${
+                i === current ? "w-2.5 h-2.5 bg-brand-gold shadow-lg shadow-brand-gold/40" : "w-1.5 h-1.5 bg-white/40"
+              }`} />
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // ─── STACKED CARDS (Desktop) ───
   const cards = [
-    // Back card (furthest)
     { offset: 2, rotate: 10, x: 60, y: -18, scale: 0.88, zIndex: 10, dim: 0.55 },
-    // Middle card
     { offset: 1, rotate: 5, x: 30, y: -8, scale: 0.94, zIndex: 20, dim: 0.3 },
-    // Front card (active)
     { offset: 0, rotate: 0, x: 0, y: 0, scale: 1, zIndex: 30, dim: 0 },
   ];
 
@@ -80,14 +118,9 @@ export default function HeroSlideshow() {
               draggable={false}
               loading="eager"
             />
-            {/* Dim overlay on back cards */}
             {card.dim > 0 && (
-              <div
-                className="absolute inset-0"
-                style={{ backgroundColor: `rgba(0,0,0,${card.dim})` }}
-              />
+              <div className="absolute inset-0" style={{ backgroundColor: `rgba(0,0,0,${card.dim})` }} />
             )}
-            {/* Gold top accent on front card */}
             {card.offset === 0 && (
               <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent" />
             )}
@@ -95,15 +128,10 @@ export default function HeroSlideshow() {
         );
       })}
 
-      {/* Gold dot indicators */}
+      {/* Indicators */}
       <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
         {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className="group"
-          >
+          <button key={i} onClick={() => setCurrent(i)} aria-label={`Slide ${i + 1}`} className="group">
             <motion.div
               className="rounded-full"
               animate={{

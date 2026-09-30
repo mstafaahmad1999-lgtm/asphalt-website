@@ -106,6 +106,15 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
             </div>
           </FadeIn>
 
+            {/* Mobile Slideshow (Visible only on screens smaller than lg) */}
+            <FadeIn delay={0.3}>
+              <div className="mt-10 lg:hidden relative w-full aspect-[16/10] max-w-md mx-auto">
+                <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl shadow-black/50" style={{ boxShadow: "0 25px 60px -15px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,166,107,0.4)" }}>
+                  <HeroSlideshow variant="single" />
+                </div>
+              </div>
+            </FadeIn>
+
             {/* Mobile & Tablet Stats Grid (Visible only on screens smaller than lg) */}
             <FadeIn delay={0.4}>
               <div className="mt-16 lg:hidden grid grid-cols-2 gap-4 w-full">
