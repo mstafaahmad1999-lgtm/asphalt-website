@@ -14,6 +14,13 @@ const slides = [
 const INTERVAL = 5000;
 const premiumEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+// Card positions: front, behind-right, behind-far-right
+const cardConfigs = [
+  { rotate: 0, x: 0, y: 0, scale: 1, zIndex: 30, opacity: 1 },        // Front
+  { rotate: 6, x: 40, y: -12, scale: 0.92, zIndex: 20, opacity: 0.7 },  // Behind right
+  { rotate: 12, x: 80, y: -24, scale: 0.84, zIndex: 10, opacity: 0.4 }, // Far behind
+];
+
 export default function HeroSlideshow() {
   const [current, setCurrent] = useState(0);
 
@@ -26,58 +33,85 @@ export default function HeroSlideshow() {
     return () => clearInterval(timer);
   }, [advance]);
 
+  // Get 3 visible slide indices
+  const getSlideIndex = (offset: number) =>
+    (current + offset) % slides.length;
+
   return (
-    <div className="relative w-full h-full overflow-hidden bg-black">
-      {/* Slides */}
-      <AnimatePresence mode="sync">
-        <motion.img
-          key={current}
-          src={slides[current].src}
-          alt={slides[current].alt}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            opacity: { duration: 1, ease: premiumEase },
-            scale: { duration: 6, ease: premiumEase },
-          }}
-          className="absolute inset-0 w-full h-full object-cover"
-          draggable={false}
-          loading="eager"
-        />
-      </AnimatePresence>
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* Stacked cards — render back to front */}
+      {[2, 1, 0].map((offset) => {
+        const idx = getSlideIndex(offset);
+        const config = cardConfigs[offset];
 
-      {/* Subtle bottom gradient for blending */}
-      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none" />
+        return (
+          <motion.div
+            key={`${idx}-${current}-${offset}`}
+            className="absolute rounded-2xl overflow-hidden shadow-2xl shadow-black/60"
+            style={{
+              width: "85%",
+              maxWidth: "520px",
+              aspectRatio: "16 / 10",
+              zIndex: config.zIndex,
+              border: offset === 0
+                ? "2px solid rgba(196, 166, 107, 0.6)"
+                : "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+            initial={{
+              rotate: cardConfigs[Math.min(offset + 1, 2)].rotate,
+              x: cardConfigs[Math.min(offset + 1, 2)].x,
+              y: cardConfigs[Math.min(offset + 1, 2)].y,
+              scale: cardConfigs[Math.min(offset + 1, 2)].scale,
+              opacity: offset === 0 ? 0 : cardConfigs[Math.min(offset + 1, 2)].opacity,
+            }}
+            animate={{
+              rotate: config.rotate,
+              x: config.x,
+              y: config.y,
+              scale: config.scale,
+              opacity: config.opacity,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: premiumEase,
+            }}
+          >
+            {/* Image */}
+            <img
+              src={slides[idx].src}
+              alt={slides[idx].alt}
+              className="w-full h-full object-cover"
+              draggable={false}
+              loading="eager"
+            />
+            {/* Dark overlay on background cards */}
+            {offset > 0 && (
+              <div className="absolute inset-0 bg-black/30" />
+            )}
+            {/* Gold shine on front card top edge */}
+            {offset === 0 && (
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent" />
+            )}
+          </motion.div>
+        );
+      })}
 
-      {/* Gold accent line at top */}
-      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent z-10" />
-
-      {/* Slide indicators */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+      {/* Slide indicators — below the cards */}
+      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2.5">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className="group relative"
+            className="group"
           >
             <div
-              className={`h-[2px] rounded-full transition-all duration-500 ${
+              className={`rounded-full transition-all duration-500 ${
                 i === current
-                  ? "w-8 bg-brand-gold"
-                  : "w-4 bg-white/40 group-hover:bg-white/70"
+                  ? "w-3 h-3 bg-brand-gold shadow-lg shadow-brand-gold/40"
+                  : "w-2 h-2 bg-white/30 group-hover:bg-white/60"
               }`}
             />
-            {i === current && (
-              <motion.div
-                className="absolute inset-0 h-[2px] rounded-full bg-white/30 origin-left"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: INTERVAL / 1000, ease: "linear" }}
-                key={`progress-${current}`}
-              />
-            )}
           </button>
         ))}
       </div>

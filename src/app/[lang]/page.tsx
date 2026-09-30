@@ -29,13 +29,11 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
           <div className="absolute inset-0 bg-gradient-to-r from-black from-0% via-black via-40% md:via-40% to-transparent to-80% md:to-80% z-10 pointer-events-none"></div>
         </div>
 
-        {/* Right-side Slideshow (Desktop only) */}
-        <div className="absolute top-28 end-8 xl:end-16 z-20 hidden lg:block w-[45%] xl:w-[42%] max-w-[640px]">
-          <SlideIn direction={dir === 'rtl' ? 'left' : 'right'} delay={0.3}>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 aspect-[16/10]">
-              <HeroSlideshow />
-            </div>
-          </SlideIn>
+        {/* Right-side Stacked Cards Slideshow (Desktop only) */}
+        <div className="absolute top-24 end-4 xl:end-10 z-20 hidden lg:flex items-center justify-center w-[48%] xl:w-[44%] max-w-[680px] h-[calc(100%-10rem)]">
+          <FadeIn delay={0.4} className="w-full h-full flex items-center justify-center">
+            <HeroSlideshow />
+          </FadeIn>
         </div>
 
         <div className="container mx-auto px-6 relative z-20">
