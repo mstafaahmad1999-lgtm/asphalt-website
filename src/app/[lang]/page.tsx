@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { getDictionary } from "@/i18n";
 import Header from "@/components/Header";
+import HeroSlideshow from "@/components/HeroSlideshow";
 import { FadeIn, SlideIn, StaggerContainer, StaggerItem, ScaleIn, InteractiveCard, InteractiveButton, ContinuousPulseBg, InfiniteMarquee, SlideUpMask, FloatingElement } from "@/components/MotionWrappers";
 
 export default async function Home({ params }: { params: Promise<{ lang: "en" | "tr" | "ar" }> }) {
@@ -16,19 +17,8 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
       <Header dict={dict} lang={lang} />
       {/* 2. Hero Section */}
       <section id="home" className="relative min-h-[90vh] flex flex-col justify-center py-20 pb-24 lg:pb-28 pt-32 md:pt-36 lg:pt-40">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0 bg-black overflow-hidden">
-          {/* Main Hero Image - Constrained width prevents over-zooming so it looks normal */}
-          <ContinuousPulseBg className="absolute inset-y-0 right-0 w-full lg:w-[70%] h-full z-0">
-            <img 
-              src="/hero-bg.jpg" 
-              alt="Hero Background" 
-              className="w-full h-full object-cover object-right"
-            />
-          </ContinuousPulseBg>
-          {/* Half black, blurry line transition */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black from-0% via-black via-40% md:via-40% to-transparent to-80% md:to-80% z-10 pointer-events-none"></div>
-        </div>
+        {/* Background Slideshow */}
+        <HeroSlideshow />
 
         <div className="container mx-auto px-6 relative z-20">
           
