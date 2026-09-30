@@ -30,8 +30,8 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         </div>
 
         {/* Right-side Stacked Cards Slideshow (Desktop only) */}
-        <div className="absolute top-24 end-4 xl:end-10 z-20 hidden lg:flex items-center justify-center w-[48%] xl:w-[44%] max-w-[680px] h-[calc(100%-10rem)]">
-          <FadeIn delay={0.4} className="w-full h-full flex items-center justify-center">
+        <div className="absolute inset-y-0 end-0 z-20 hidden lg:flex items-center justify-center w-[50%] xl:w-[46%] pe-12 xl:pe-20 pb-24">
+          <FadeIn delay={0.4} className="relative w-full max-w-[600px] aspect-[16/10]">
             <HeroSlideshow />
           </FadeIn>
         </div>
