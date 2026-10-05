@@ -118,5 +118,15 @@
     "email": "Email",
     "phone": "Phone / WhatsApp",
     "rights": "TAJ ASPHALT Co. Company for Oxidized Asphalt Production Ltd. All rights reserved."
+  },
+  "locations": {
+    "sectionTitle": "OUR OFFICES",
+    "sectionSubtitle": "Visit Us",
+    "sectionDesc": "We have offices in Iraq and Turkey to serve our clients across the Middle East and beyond.",
+    "iraqOffice": "Iraq Office",
+    "iraqAddress": "Al-Mansour – 14 Ramadan, Neighborhood 609, Alley 31, House 22/1, Adjacent to Center Point Restaurant",
+    "turkeyOffice": "Turkey Office",
+    "turkeyAddress": "Çay Mah. Osman Gazi Cd. Steel Tower A Blok No: 1 Kat: 15 Daire: 53 İskenderun / Hatay",
+    "getDirections": "Get Directions"
   }
 }

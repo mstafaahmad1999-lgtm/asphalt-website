@@ -117,5 +117,15 @@
     "email": "البريد الإلكتروني",
     "phone": "الهاتف / واتساب",
     "rights": "شركة TAJ ASPHALT لإنتاج الأسفلت المؤكسد المحدودة. جميع الحقوق محفوظة."
+  },
+  "locations": {
+    "sectionTitle": "مكاتبنا",
+    "sectionSubtitle": "زورونا",
+    "sectionDesc": "لدينا مكاتب في العراق وتركيا لخدمة عملائنا في جميع أنحاء الشرق الأوسط وخارجه.",
+    "iraqOffice": "مكتب العراق",
+    "iraqAddress": "المنصور - ١٤ رمضان، محلة ٦٠٩، زقاق ٣١، دار ٢٢/١، مجاور مطعم سنتر بوينت",
+    "turkeyOffice": "مكتب تركيا",
+    "turkeyAddress": "Çay Mah. Osman Gazi Cd. Steel Tower A Blok No: 1 Kat: 15 Daire: 53 İskenderun / Hatay",
+    "getDirections": "احصل على الاتجاهات"
   }
 }

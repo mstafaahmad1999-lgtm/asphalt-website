@@ -528,6 +528,106 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         </div>
       </section>
 
+      {/* 7. Locations / Map Section */}
+      <section id="locations" className="bg-brand-dark py-16 md:py-24 relative overflow-hidden scroll-mt-10">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 opacity-5 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <FadeIn className="text-center mb-16">
+            <div className="text-brand-gold font-bold text-xs tracking-widest uppercase mb-3">{dict.locations.sectionSubtitle}</div>
+            <h2 className="text-3xl md:text-4xl font-serif text-white font-bold mb-6">{dict.locations.sectionTitle}</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+              {dict.locations.sectionDesc}
+            </p>
+          </FadeIn>
+
+          <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+            {/* Iraq Office */}
+            <StaggerItem>
+              <InteractiveCard className="bg-brand-gray/80 backdrop-blur rounded-2xl border border-white/10 overflow-hidden shadow-2xl hover:border-brand-gold/30 transition-all h-full flex flex-col">
+                {/* Map */}
+                <div className="relative w-full h-[300px] md:h-[350px]">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3334.18!2d44.339!3d33.3142!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDE4JzUxLjIiTiA0NMKwMjAnMjAuNSJF!5e0!3m2!1sen!2s!4v1696000000000"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="TAJ ASPHALT Iraq Office Location"
+                    className="absolute inset-0"
+                  ></iframe>
+                  {/* Gold accent top border */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent"></div>
+                </div>
+                {/* Office Info */}
+                <div className="p-6 md:p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 className="text-white font-serif text-xl font-bold">{dict.locations.iraqOffice}</h3>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">{dict.locations.iraqAddress}</p>
+                  <a
+                    href="https://maps.app.goo.gl/9xcx1TTvUPEvWQSE9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-brand-gold hover:text-white border border-brand-gold/40 hover:bg-brand-gold/20 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all self-start"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    {dict.locations.getDirections}
+                  </a>
+                </div>
+              </InteractiveCard>
+            </StaggerItem>
+
+            {/* Turkey Office */}
+            <StaggerItem>
+              <InteractiveCard className="bg-brand-gray/80 backdrop-blur rounded-2xl border border-white/10 overflow-hidden shadow-2xl hover:border-brand-gold/30 transition-all h-full flex flex-col">
+                {/* Map */}
+                <div className="relative w-full h-[300px] md:h-[350px]">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d283.17!2d36.1747!3d36.5865!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDM1JzExLjUiTiAzNsKwMTAnMjkuMCJF!5e0!3m2!1sen!2s!4v1696000000000"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="TAJ ASPHALT Turkey Office Location"
+                    className="absolute inset-0"
+                  ></iframe>
+                  {/* Gold accent top border */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent"></div>
+                </div>
+                {/* Office Info */}
+                <div className="p-6 md:p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 className="text-white font-serif text-xl font-bold">{dict.locations.turkeyOffice}</h3>
+                  </div>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">{dict.locations.turkeyAddress}</p>
+                  <a
+                    href="https://maps.app.goo.gl/jmL8NVha89q4mEj86"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-brand-gold hover:text-white border border-brand-gold/40 hover:bg-brand-gold/20 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all self-start"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    {dict.locations.getDirections}
+                  </a>
+                </div>
+              </InteractiveCard>
+            </StaggerItem>
+          </StaggerContainer>
+        </div>
+      </section>
+
       {/* 9. Contact Section & Footer */}
       <section id="contact" className="bg-brand-darker pt-16 md:pt-24 pb-24 scroll-mt-10">
         <div className="container mx-auto px-6">
