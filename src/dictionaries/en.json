@@ -128,5 +128,13 @@
     "turkeyOffice": "Turkey Office",
     "turkeyAddress": "Çay Mah. Osman Gazi Cd. Steel Tower A Blok No: 1 Kat: 15 Daire: 53 İskenderun / Hatay",
     "getDirections": "Get Directions"
+  },
+  "partners": {
+    "sectionTitle": "OUR OFFICIAL PARTNERS",
+    "sectionSubtitle": "Trusted Partnerships",
+    "sectionDesc": "We are proud to work alongside leading companies in the oxidized asphalt industry.",
+    "viewLocation": "View Location",
+    "partner1Name": "Al-Muhaib Company for Oxidized Asphalt Production",
+    "partner2Name": "Al-Insaf Company for Contracting and Oxidized Asphalt Production"
   }
 }

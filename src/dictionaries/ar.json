@@ -127,5 +127,13 @@
     "turkeyOffice": "مكتب تركيا",
     "turkeyAddress": "Çay Mah. Osman Gazi Cd. Steel Tower A Blok No: 1 Kat: 15 Daire: 53 İskenderun / Hatay",
     "getDirections": "احصل على الاتجاهات"
+  },
+  "partners": {
+    "sectionTitle": "شركاؤنا الرسميون",
+    "sectionSubtitle": "شراكات موثوقة",
+    "sectionDesc": "نحن فخورون بالعمل جنباً إلى جنب مع الشركات الرائدة في صناعة الأسفلت المؤكسد.",
+    "viewLocation": "عرض الموقع",
+    "partner1Name": "شركة المهيب لإنتاج الأسفلت المؤكسد",
+    "partner2Name": "شركة الإنصاف للمقاولات وإنتاج الأسفلت المؤكسد"
   }
 }

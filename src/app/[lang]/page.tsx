@@ -628,7 +628,94 @@ export default async function Home({ params }: { params: Promise<{ lang: "en" | 
         </div>
       </section>
 
-      {/* 9. Contact Section & Footer */}
+      
+      {/* 8. Official Partners Section */}
+      <section id="partners" className="bg-brand-darker py-16 md:py-24 relative overflow-hidden scroll-mt-10">
+        <div className="container mx-auto px-6 relative z-10">
+          <FadeIn className="text-center mb-16">
+            <div className="text-brand-gold font-bold text-xs tracking-widest uppercase mb-3">{dict.partners.sectionSubtitle}</div>
+            <h2 className="text-3xl md:text-4xl font-serif text-white font-bold mb-6">{dict.partners.sectionTitle}</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+              {dict.partners.sectionDesc}
+            </p>
+          </FadeIn>
+
+          <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+            {/* Partner 1 - Al-Muhaib */}
+            <StaggerItem>
+              <InteractiveCard className="bg-brand-gray/80 backdrop-blur rounded-2xl border border-white/10 overflow-hidden shadow-2xl hover:border-brand-gold/30 transition-all h-full flex flex-col group">
+                {/* Image */}
+                <div className="relative w-full h-[250px] md:h-[300px] overflow-hidden">
+                  <Image
+                    src="/al-muhaib.jpg"
+                    alt={dict.partners.partner1Name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-darker/80 via-transparent to-transparent"></div>
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent"></div>
+                </div>
+                {/* Partner Info */}
+                <div className="p-6 md:p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 className="text-white font-serif text-xl font-bold">{dict.partners.partner1Name}</h3>
+                  </div>
+                  <a
+                    href="https://maps.app.goo.gl/Pps52UcUpWXQ2eCV9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-brand-gold hover:text-white border border-brand-gold/40 hover:bg-brand-gold/20 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all self-start mt-auto"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    {dict.partners.viewLocation}
+                  </a>
+                </div>
+              </InteractiveCard>
+            </StaggerItem>
+
+            {/* Partner 2 - Al-Insaf */}
+            <StaggerItem>
+              <InteractiveCard className="bg-brand-gray/80 backdrop-blur rounded-2xl border border-white/10 overflow-hidden shadow-2xl hover:border-brand-gold/30 transition-all h-full flex flex-col group">
+                {/* Image */}
+                <div className="relative w-full h-[250px] md:h-[300px] overflow-hidden">
+                  <Image
+                    src="/al-insaf.jpg"
+                    alt={dict.partners.partner2Name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-darker/80 via-transparent to-transparent"></div>
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent"></div>
+                </div>
+                {/* Partner Info */}
+                <div className="p-6 md:p-8 flex flex-col flex-grow">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 className="text-white font-serif text-xl font-bold">{dict.partners.partner2Name}</h3>
+                  </div>
+                  <a
+                    href="https://maps.app.goo.gl/KmDyWFw98R69L46c9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-brand-gold hover:text-white border border-brand-gold/40 hover:bg-brand-gold/20 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all self-start mt-auto"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    {dict.partners.viewLocation}
+                  </a>
+                </div>
+              </InteractiveCard>
+            </StaggerItem>
+          </StaggerContainer>
+        </div>
+      </section>
+{/* 9. Contact Section & Footer */}
       <section id="contact" className="bg-brand-darker pt-16 md:pt-24 pb-24 scroll-mt-10">
         <div className="container mx-auto px-6">
           <ScaleIn className="text-center mb-16">
